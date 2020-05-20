@@ -245,6 +245,9 @@ skynet_context_endless(uint32_t handle) {
 		return;
 	}
 	ctx->endless = true;
+	int sig = 0;
+    	// NOTICE: the signal function should be thread safe.
+    	skynet_module_instance_signal(ctx->mod, ctx->instance, sig);
 	skynet_context_release(ctx);
 }
 
